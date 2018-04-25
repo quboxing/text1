@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}我的案例{% endblock %}
+{% block main %}
+
+{% if text %}
+{% for text in text %}
+<p></p>
+<a href="{{url_for('xiangqing',text_id=text.id)}}">序号：{{text.id}}</a>
+<p>案例标题为：{{text.title}}</p>
+<p>案例内容为：{{text.content}}</p>
+<p>编写时间为：{{text.time}}</p>
+{% endfor %}
+{% else %}
+<p>您目前还没有提交案例，请提交</p>
+<a href="{{url_for('tianjia')}}">立即填写案例</a>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}详情{% endblock %}
+{% block main %}
+<p>序号为：{{text.id}}</p>
+<p>案例标题为：{{text.title}}</p>
+<p>案例内容为：{{text.content}}</p>
+<p>作者：{{text.author_name}}</p>
+<p>编写时间为：{{text.time}}</p>
+<form action="" method="post">
+    <input type="text" name="pinglun" placeholder="评论内容为：">
+    <input type="submit" name="提交评论内容">
+</form>
+{% if pinglun %}
+{% for pinglun in pinglun %}
+<p>评论内容：{{pinglun.pinglun}}</p>
+<p>评论人：{{pinglun.author_name}}</p>
+<p>评论时间：{{pinglun.time}}</p>
+
+{% endfor %}
+{% endif%}
+{% endblock %}

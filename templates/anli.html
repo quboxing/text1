@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}欢迎光临{% endblock %}
+{% block main %}
+
+
+<a href="{{url_for('wodeanli')}}">我的案例</a>
+<a href="{{url_for('tianjia')}}">添加婚庆案例</a>
+<p>已有婚庆案例展示：</p>
+{% for text in text %}
+<a href="{{url_for('xiangqing',text_id=text.id)}}">序号：{{text.id}}</a>
+<p>婚庆案例标题：{{text.title}}</p>
+<p>婚庆案例内容：{{text.content}}</p>
+<p>婚庆案例作者：{{text.author_name}}</p>
+<p>提交时间：{{text.time}}</p>
+{% endfor %}
+
+
+{% endblock %}

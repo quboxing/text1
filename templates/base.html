@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}奥迪婚庆！</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <style>
+        #zuishouye
+        {
+        /*letter-spacing:10px;  设置字体之间的间距*/
+        background-color:beige;   /*设置背景颜色*/
+        word-spacing:30px;/*设置单词之间的间距*/
+
+        /*font-size:20px; */  /*设置字体大小*/
+        text-indent:0px;  /*设置首行缩进*/
+        padding-top:20px;
+        padding-bottom:20px;
+        /*color:red;*/
+
+        }
+        #shouye
+        {
+        font-size:35px;
+        color:purple;
+        text-indent:100px;
+        padding-top:30px;
+        padding-bottom:30px;
+        background-color:grey;
+        }
+        #daohang ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: purple;
+            }
+
+        #daohang ul li {
+                float: left;
+            }
+
+        #daohang ul li a {
+                display: block;
+                color: white;
+                text-align:center;
+                padding: 14px 30px;
+                text-decoration: none;
+            }
+
+        #daohang ul li a:hover {
+                background-color: red;
+            }
+    </style>
+</head>
+<body>
+
+<div id="zuishouye">
+
+    您好，您正在访问的是西安奥迪婚庆有限公司！如有问题欢迎联系：15771991241!
+
+    <a href="#">设为首页</a>
+    <a href="#">收藏本站</a>
+    <a href="#"> 联系我们</a>
+
+    {% if user %}
+    <p>用户为：{{user.username}}</p>
+    <a href="{{url_for('shouye')}}">首页</a>
+    <a href="{{url_for('zhuxiao')}}">注销</a>
+
+
+    {% else %}
+
+    <a href="{{url_for('denglu')}}" >登陆</a>
+    <a href="{{url_for('zhuce')}}">注册</a>
+    {% endif %}
+</div>
+<div id="shouye" >
+    欢迎光临奥迪婚庆官网首页
+    <img src="{{ url_for('static',filename='images/li.jpg')}}" alt="奥迪" />
+
+</div>
+<div id="daohang" >
+  <ul>
+    <li><a href="{{url_for('shouye')}}">首页</a> </li>
+    <li><a href="{{url_for('jieshao')}}">公司介绍</a> </li>
+    <li><a href="{{url_for('taocan')}}">选购套餐</a> </li>
+    <li><a href="{{url_for('anli')}}">婚庆案例</a> </li>
+    <li><a href="www.baidu.com">新闻资讯</a> </li>
+    <li><a href="{{url_for('jiaruwomen')}}">加入我们</a> </li>
+  </ul>
+</div>
+
+{% block main %}{% endblock %}
+</body>
+</html>
